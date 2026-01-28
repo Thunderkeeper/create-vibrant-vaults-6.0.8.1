@@ -10,12 +10,12 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(ChainConveyorInteractionHandler.class)
 public abstract class ChainConveyorInteractionHandlerMixin {
-    @ModifyExpressionValue(method = "isActive", at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;isIn(Lnet/minecraft/world/item/ItemStack;)Z"), remap = false)
+    @ModifyExpressionValue(method = "isActive", at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;isIn(Lnet/minecraft/world/item/ItemStack;)Z"))
     private static boolean createVibrantVaults$isActiveIsFrogport(boolean original, @Local ItemStack mainHandItem) {
         return original || ModItemTags.VIBRANT_FROGPORTS.matches(mainHandItem);
     }
 
-    @ModifyExpressionValue(method = "onUse", at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;isIn(Lnet/minecraft/world/item/ItemStack;)Z"), remap = false)
+    @ModifyExpressionValue(method = "onUse", at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;isIn(Lnet/minecraft/world/item/ItemStack;)Z"))
     private static boolean createVibrantVaults$onUseIsFrogport(boolean original, @Local(ordinal = 0) ItemStack mainHandItem) {
         return original || ModItemTags.VIBRANT_FROGPORTS.matches(mainHandItem);
     }
