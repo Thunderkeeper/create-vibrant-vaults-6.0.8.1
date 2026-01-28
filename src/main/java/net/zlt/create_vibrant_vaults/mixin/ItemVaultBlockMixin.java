@@ -25,7 +25,7 @@ public abstract class ItemVaultBlockMixin extends Block {
         ItemVaultConnectivityHelper.splitItemVaultMulti(be);
     }
 
-    @Redirect(method = "onRemove", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/api/connectivity/ConnectivityHandler;splitMulti(Lnet/minecraft/world/level/block/entity/BlockEntity;)V"), remap = false)
+    @Redirect(method = "onRemove", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/api/connectivity/ConnectivityHandler;splitMulti(Lnet/minecraft/world/level/block/entity/BlockEntity;)V"))
     private <T extends BlockEntity & IMultiBlockEntityContainer> void createVibrantVaults$onRemoveSplitMulti(T be) {
         ItemVaultConnectivityHelper.splitItemVaultMulti(be);
     }
