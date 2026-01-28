@@ -56,12 +56,12 @@ public abstract class ItemVaultBlockEntityMixin extends SmartBlockEntity {
         return ItemVaultConnectivityHelper.partAt(this, level, pos);
     }
 
-    @WrapOperation(method = "getMaxLength(Lnet/minecraft/core/Direction$Axis;I)I", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/logistics/vault/ItemVaultBlockEntity;getMaxWidth()I"), remap = false)
+    @WrapOperation(method = "getMaxLength(Lnet/minecraft/core/Direction$Axis;I)I", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/logistics/vault/ItemVaultBlockEntity;getMaxWidth()I"))
     private int createVibrantVaults$getMaxHeight(ItemVaultBlockEntity instance, Operation<Integer> original, @Local(argsOnly = true) int width) {
         return ModBlockTags.VERTICAL_VAULTS.matches(getBlockState()) ? ItemVaultBlockEntity.getMaxLength(width) : original.call(instance);
     }
 
-    @WrapOperation(method = "getMaxLength(Lnet/minecraft/core/Direction$Axis;I)I", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/logistics/vault/ItemVaultBlockEntity;getMaxLength(I)I"), remap = false)
+    @WrapOperation(method = "getMaxLength(Lnet/minecraft/core/Direction$Axis;I)I", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/logistics/vault/ItemVaultBlockEntity;getMaxLength(I)I"))
     private int createVibrantVaults$getMaxHeight(int radius, Operation<Integer> original, @Local(argsOnly = true) int width) {
         return ModBlockTags.VERTICAL_VAULTS.matches(getBlockState()) ? getMaxWidth() : original.call(radius);
     }
