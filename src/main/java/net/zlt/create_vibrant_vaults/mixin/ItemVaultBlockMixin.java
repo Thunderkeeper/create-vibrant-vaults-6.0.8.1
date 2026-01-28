@@ -30,7 +30,7 @@ public abstract class ItemVaultBlockMixin extends Block {
         ItemVaultConnectivityHelper.splitItemVaultMulti(be);
     }
 
-    @Inject(method = "getVaultBlockAxis", at = @At("HEAD"), cancellable = true, remap = false)
+    @Inject(method = "getVaultBlockAxis", at = @At("HEAD"), cancellable = true)
     private static void createVibrantVaults$getVerticalVaultAxis(BlockState state, CallbackInfoReturnable<Direction.Axis> cir) {
         if (ModBlockTags.VERTICAL_VAULTS.matches(state)) {
             cir.setReturnValue(Direction.Axis.Y);

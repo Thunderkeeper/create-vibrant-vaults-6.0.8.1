@@ -29,7 +29,7 @@ public abstract class FactoryPanelBlockEntityMixin {
     @Unique
     private ModBlocks.VibrantVaultColor createVibrantVaults$restockerColor = null;
 
-    @Inject(method = "<init>", at = @At("TAIL"), remap = false)
+    @Inject(method = "<init>", at = @At("TAIL"))
     private void createVibrantVaults$initRestockerColor(BlockEntityType<?> type, BlockPos pos, BlockState state, CallbackInfo ci) {
         createVibrantVaults$restockerColor = ModBlocks.VibrantVaultColor.BASE;
     }
@@ -55,12 +55,12 @@ public abstract class FactoryPanelBlockEntityMixin {
         createVibrantVaults$restockerColor = restocker && createVibrantVaults$lazyTickBlockState.getBlock() instanceof VibrantPackagerBlock vibrantPackager ? vibrantPackager.color : ModBlocks.VibrantVaultColor.BASE;
     }
 
-    @Inject(method = "read", at = @At("TAIL"), remap = false)
+    @Inject(method = "read", at = @At("TAIL"))
     private void createVibrantVaults$readRestockerColor(CompoundTag tag, boolean clientPacket, CallbackInfo ci) {
         createVibrantVaults$restockerColor = ModBlocks.VibrantVaultColor.byName(tag.getString("CreateVibrantVaultsRestockerColor"));
     }
 
-    @Inject(method = "write", at = @At("TAIL"), remap = false)
+    @Inject(method = "write", at = @At("TAIL"))
     private void createVibrantVaults$writeRestockerColor(CompoundTag tag, boolean clientPacket, CallbackInfo ci) {
         if (createVibrantVaults$restockerColor != null) {
             tag.putString("CreateVibrantVaultsRestockerColor", createVibrantVaults$restockerColor.getSerializedName());
